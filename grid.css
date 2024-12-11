@@ -3255,3 +3255,55 @@ textarea {
     }
 }
 
+/* Container for the wallets */
+.wallets-container {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 10px;
+    overflow-y: auto;
+    height: 80vh;
+    margin-top: 20px; /* Optional: Adds space above the container */
+}
+
+/* Each wallet item */
+.wallet-item {
+    display: flex;
+    justify-content: space-between; /* Ensures name is left and logo is right */
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1rem; /* Space between each wallet item */
+    border: 1px solid #ddd; /* Custom gray border */
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.wallet-item:hover {
+    background-color: #f7f7f7;
+}
+
+/* Wallet name text */
+.wallet-item p {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin: 0; /* Remove default margin */
+    flex: 1; /* Allows the wallet name to take up the available space */
+}
+
+/* Wallet icon image */
+.wallet-item img {
+    width: 50px; /* Matching icon size */
+    height: 50px; /* Square aspect ratio for uniform icons */
+    border-radius: 50%; /* Circular icons */
+}
+
+/* Search Bar */
+.search-bar input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-top: 1rem;
+}
