@@ -3278,24 +3278,31 @@ textarea {
     transition: background-color 0.3s;
 }
 
-.wallet-item:hover {
-    background-color: #f7f7f7;
-}
-
 /* Wallet name text */
 .wallet-item p {
     font-size: 16px;
     font-weight: bold;
     color: #333;
-    margin: 0; /* Remove default margin */
+    margin: 0;
     flex: 1; /* Allows the wallet name to take up the available space */
 }
 
-/* Wallet icon image */
+/* Wallet icon image - resizing to fit within the container */
 .wallet-item img {
-    width: 50px; /* Matching icon size */
-    height: 50px; /* Square aspect ratio for uniform icons */
-    border-radius: 50%; /* Circular icons */
+    width: 40px; /* Shrink the image to 40px */
+    height: 40px; /* Ensure the height is the same for a square image */
+    object-fit: contain; /* Ensures the image maintains its aspect ratio */
+    border-radius: 50%; /* Keeps the image circular */
+}
+
+/* Container for the wallets */
+.wallets-container {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 10px;
+    overflow-y: auto;
+    height: 80vh;
+    margin-top: 20px;
 }
 
 /* Search Bar */
