@@ -3202,7 +3202,6 @@ textarea {
         padding: 8px;
     }
 }
-
 /* Container for the wallets */
 .wallets-container {
     background-color: white;
@@ -3215,7 +3214,7 @@ textarea {
 /* Each wallet item */
 .wallet-item {
     display: flex;
-    justify-content: space-between; /* Space between the name and logo */
+    justify-content: space-between; /* Ensures name is left and logo is right */
     align-items: center;
     padding: 1rem;
     margin-bottom: 1rem;
@@ -3235,6 +3234,7 @@ textarea {
     font-weight: bold;
     color: #333;
     margin: 0; /* Remove default margin */
+    flex: 1; /* Allows the wallet name to take up the available space */
 }
 
 /* Wallet icon image */
